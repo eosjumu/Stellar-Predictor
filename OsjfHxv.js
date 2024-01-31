@@ -11,27 +11,20 @@
 (function() {
     'use strict';
 
-    // URL of the GitHub raw file containing the credentials
-    var credentialsURL = 'https://raw.githubusercontent.com/eosjumu/GjssFjxwwT/main/OsjfHxv.json';
+    // Array of username and password pairs
+    var credentials = [
+        { username: 'xjumu', password: '123123' },
+        { username: 'maylo', password: '123123' }
+    ];
 
     // Function to fetch credentials from GitHub
     async function fetchCredentials() {
-        try {
-            const response = await fetch(credentialsURL);
-            if (!response.ok) {
-                throw new Error('Failed to fetch credentials');
-            }
-            const credentials = await response.json();
-            return credentials;
-        } catch (error) {
-            console.error(error);
-            return [];
-        }
+        return credentials; // Return the predefined array of credentials
     }
 
     // Function to create and display the login GUI
     async function createLoginGUI() {
-        // Fetch credentials from GitHub
+        // Fetch credentials
         var credentials = await fetchCredentials();
 
         // Create a div element for the login GUI
@@ -85,7 +78,7 @@
 
         // Add text and inputs to the container
         textInputContainer.innerHTML += `
-            <span style="color: purple; font-size: 26px; font-family: monospace;">Stellar</span> 
+            <span style="color: purple; font-size: 26px; font-family: monospace;">Stellar</span>
             <span style="color: white; font-size: 24px; font-family: monospace;">Predictor</span><br><br>
             <div style="display: flex; flex-direction: column; align-items: flex-end;">
                 <input type="text" id="username" placeholder="Username" style="margin-bottom: 8px; font-size: 18px; border: 3px solid black; border-radius: 10px; padding: 5px; box-shadow: inset 0 0 10px rgba(128,0,128,0.5); font-family: monospace; animation: glow2 1.5s infinite;"><br>
@@ -282,4 +275,5 @@
         }
     `;
     document.getElementsByTagName('head')[0].appendChild(style);
+
 })();
